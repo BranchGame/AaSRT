@@ -1,30 +1,35 @@
-package ru.mirea.lab7;
+package ru.mirea.lab1;
+
+import java.util.Scanner;
 
 public class Task2 {
-    public static class ProcessString implements StringUtil{
-        public static void main(String[] args) {
-            String test = "String test StringUtil";
+    public static void main(String[] args) {
+        int[] array = new int[5];
+        int sum = 0;
 
-            System.out.println(StringUtil.howManyChars(test));
-            System.out.println(StringUtil.oddChars(test));
-        }
-    }
+        Scanner input = new Scanner(System.in);
 
-    public interface StringUtil {
-        static int howManyChars(String string) {
-            return string.length();
+        for(int i = 0; i < array.length; i++) {
+            array[i] = input.nextInt();
+            sum += array[i];
         }
 
-        static String oddChars(String string) {
-            StringBuilder stringBuilder = new StringBuilder(string);
+        int max = array[0], min = array[0];
 
-            for(int i = 0; i < stringBuilder.length(); i++) {
-                if(i % 2 != 0) {
-                    stringBuilder.deleteCharAt(i);
-                }
+        for(int num : array) {
+            System.out.println(num);
+
+            if(max < num) {
+                max = num;
             }
 
-            return stringBuilder.toString();
+            if(min > num) {
+                min = num;
+            }
         }
+
+        System.out.println(sum);
+        System.out.println(max);
+        System.out.println(min);
     }
 }
